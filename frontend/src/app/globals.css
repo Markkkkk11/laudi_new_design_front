@@ -190,18 +190,6 @@ body {
   }
 }
 
-@keyframes loader-progress {
-  0% {
-    transform: translateX(-100%) scaleX(0.24);
-  }
-  48% {
-    transform: translateX(-22%) scaleX(0.74);
-  }
-  100% {
-    transform: translateX(100%) scaleX(0.36);
-  }
-}
-
 .section-halo,
 .pricing-gradient,
 .final-gradient,
@@ -277,9 +265,7 @@ body {
   z-index: 2;
   width: 82px;
   height: 86px;
-  background: #050505;
-  -webkit-mask: url("/favicon.svg") center / contain no-repeat;
-  mask: url("/favicon.svg") center / contain no-repeat;
+  color: #050505;
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.12));
   animation: loader-mark-float 1.8s ease-in-out infinite 620ms;
 }
@@ -299,26 +285,6 @@ body {
   border-bottom-color: rgba(0, 0, 0, 0.34);
   animation-duration: 2.4s;
   animation-direction: reverse;
-}
-
-.page-loader-progress {
-  position: absolute;
-  top: calc(50% + 112px);
-  width: min(220px, 56vw);
-  height: 3px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.08);
-}
-
-.page-loader-progress span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  background: #050505;
-  transform-origin: left center;
-  animation: loader-progress 1.25s ease-in-out infinite;
 }
 
 .site-header {
