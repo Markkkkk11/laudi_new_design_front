@@ -227,14 +227,13 @@ export default function LandingPage() {
             </Reveal>
 
             <Reveal direction="up" delay={100}>
-              <p className="text-[18px] font-semibold tracking-[-0.03em] text-black sm:text-[22px]">
-                Раскройте весь потенциал
-              </p>
-              <h1 className="mt-3 max-w-6xl text-[62px] font-normal leading-[0.9] tracking-[-0.065em] text-black sm:text-[96px] lg:text-[124px] xl:text-[138px]">
-                laudi
+              <h1 className="mt-3 max-w-6xl text-[52px] font-semibold leading-[0.92] tracking-[-0.06em] text-black sm:text-[76px] lg:text-[100px] xl:text-[112px]">
+                Один AI-ассистент.
+                <br />
+                Все лучшие модели внутри.
               </h1>
-              <p className="mt-5 text-[22px] font-semibold tracking-[-0.04em] text-black sm:text-[32px]">
-                единственный AI-ассистент, который вам нужен
+              <p className="mx-auto mt-6 max-w-[900px] text-[18px] font-medium leading-[1.2] tracking-[-0.03em] text-black/82 sm:text-[26px] lg:text-[34px]">
+                Сэкономьте тысячи на подписках. Laudi объединяет Claude, GPT-4, Gemini Pro, Midjourney, Suno и другие в одном интерфейсе.
               </p>
             </Reveal>
 
