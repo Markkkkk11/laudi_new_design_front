@@ -184,9 +184,18 @@ body {
   }
 }
 
-@keyframes loader-ring-spin {
-  to {
-    transform: rotate(360deg);
+@keyframes loader-mark-sheen {
+  0%, 100% {
+    opacity: 0.16;
+  }
+  45% {
+    opacity: 0.22;
+  }
+  58% {
+    opacity: 0.95;
+  }
+  72% {
+    opacity: 0.28;
   }
 }
 
@@ -254,8 +263,8 @@ body {
 .page-loader-mark-wrap {
   position: relative;
   display: grid;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   place-items: center;
   animation: loader-mark-in 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -263,28 +272,27 @@ body {
 .page-loader-mark {
   position: relative;
   z-index: 2;
-  width: 82px;
-  height: 86px;
+  width: 64px;
+  height: 66px;
   color: #050505;
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.12));
   animation: loader-mark-float 1.8s ease-in-out infinite 620ms;
 }
 
-.page-loader-ring {
-  position: absolute;
-  inset: 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-top-color: rgba(0, 0, 0, 0.72);
-  animation: loader-ring-spin 1.6s linear infinite;
+.page-loader-mark-shadow {
+  transform: translate3d(0, 12px, 0) scale(0.94);
+  transform-origin: center;
 }
 
-.page-loader-ring-soft {
-  inset: 24px;
-  border-color: rgba(0, 0, 0, 0.045);
-  border-bottom-color: rgba(0, 0, 0, 0.34);
-  animation-duration: 2.4s;
-  animation-direction: reverse;
+.page-loader-mark-base,
+.page-loader-mark-sheen,
+.page-loader-mark-shadow {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.page-loader-mark-sheen {
+  animation: loader-mark-sheen 2.8s ease-in-out infinite;
 }
 
 .site-header {
