@@ -321,8 +321,8 @@ body {
 .page-loader-mark-wrap {
   position: relative;
   display: grid;
-  width: 120px;
-  height: 120px;
+  width: 108px;
+  height: 108px;
   place-items: center;
   animation: loader-mark-in 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -330,8 +330,8 @@ body {
 .page-loader-mark {
   position: relative;
   z-index: 2;
-  width: 64px;
-  height: 66px;
+  width: 56px;
+  height: 58px;
   color: #050505;
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.12));
   animation: loader-mark-float 1.8s ease-in-out infinite 620ms;
