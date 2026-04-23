@@ -15,6 +15,11 @@ const STARTERS = ["Чат", "Изображения", "Презентации", 
 
 const HERO_MARKS = ["ChatGPT", "Claude", "Gemini", "Suno", "NanoBanana"];
 const CHAT_URL = "https://chat.laudi.ai/";
+const USER_AVATARS = [
+  { label: "MK", style: "from-[#f0d7c5] via-[#ccb19e] to-[#8f745f]" },
+  { label: "AI", style: "from-[#0f1115] via-[#050505] to-[#20242f]" },
+  { label: "LN", style: "from-[#151515] via-[#050505] to-[#2f2f2f]" },
+];
 
 const FEATURE_STORIES = [
   {
@@ -214,46 +219,34 @@ export default function LandingPage() {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,rgba(247,247,244,0.96),rgba(247,247,244,0))]" />
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center">
             <Reveal direction="up">
-              <Link
-                href={CHAT_URL}
-                className="mb-8 inline-flex items-center rounded-full border border-black/[0.06] bg-white/44 px-3 py-2 text-[13px] font-semibold text-black/76 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:bg-white/70"
-              >
-                <span className="mr-2 rounded-full bg-black px-3 py-1 text-[11px] font-bold uppercase tracking-[0.02em] text-white">
-                  AI
-                </span>
-                25 143+ пользователей
-                <ArrowRight className="ml-2 h-3.5 w-3.5" />
-              </Link>
+              <HeroUsersBadge className="mb-9" />
             </Reveal>
 
             <Reveal direction="up" delay={100}>
-              <p className="text-[18px] font-semibold tracking-[-0.03em] text-black sm:text-[22px]">
-                Раскройте весь потенциал
-              </p>
-              <h1 className="mt-3 max-w-6xl text-[62px] font-normal leading-[0.9] tracking-[-0.065em] text-black sm:text-[96px] lg:text-[124px] xl:text-[138px]">
-                laudi
+              <h1 className="mx-auto max-w-[1180px] text-balance text-[52px] font-semibold leading-[0.92] tracking-[-0.06em] text-black sm:text-[76px] lg:text-[104px] xl:text-[118px]">
+                Один AI-ассистент.
+                <br />
+                Все лучшие модели внутри.
               </h1>
-              <p className="mt-5 text-[22px] font-semibold tracking-[-0.04em] text-black sm:text-[32px]">
-                единственный AI-ассистент, который вам нужен
+              <p className="mx-auto mt-7 max-w-[940px] text-balance text-[20px] font-medium leading-[1.22] tracking-[-0.04em] text-black/82 sm:text-[28px] lg:text-[34px]">
+                Сэкономьте тысячи на подписках. laudi объединяет Claude, GPT-4, Gemini Pro, Midjourney, Suno и другие модели в одном интерфейсе.
               </p>
             </Reveal>
 
             <Reveal direction="up" delay={190}>
-              <p className="mt-7 max-w-[560px] text-[15px] font-medium leading-[1.38] tracking-[-0.01em] text-black/62 sm:text-[16px]">
-                Получайте Claude, ChatGPT, Gemini, Suno и другие модели для генерации изображений, видео, аудио без переходов между приложениями.
+              <p className="mt-6 max-w-[720px] text-balance text-[15px] font-medium leading-[1.45] tracking-[-0.01em] text-black/56 sm:text-[17px]">
+                Задачи, ресерч, изображения, код, аудио и презентации без прыжков между сервисами, VPN и отдельных подписок на каждый инструмент.
               </p>
             </Reveal>
 
-            <Reveal direction="up" delay={280} className="mt-10 w-full max-w-[760px]">
+            <Reveal direction="up" delay={280} className="mt-12 w-full max-w-[820px]">
               <PromptComposer />
             </Reveal>
 
             <Reveal direction="up" delay={360}>
-              <div className="mt-9 w-full">
-                <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.16em] text-black/34">
-                  Почему laudi
-                </p>
-                <div className="mx-auto flex max-w-[680px] flex-wrap items-center justify-center gap-x-10 gap-y-4">
+              <div className="mt-8 flex w-full flex-col items-center">
+                <HeroUsersBadge />
+                <div className="mx-auto mt-8 flex max-w-[680px] flex-wrap items-center justify-center gap-x-10 gap-y-4">
                   {HERO_MARKS.map((mark) => (
                     <span key={mark} className="text-[22px] font-extrabold tracking-[-0.06em] text-black/68 sm:text-[28px]">
                       {mark}
@@ -824,6 +817,28 @@ function PromptComposer() {
         </div>
       </div>
     </div>
+  );
+}
+
+function HeroUsersBadge({ className = "" }: { className?: string }) {
+  return (
+    <Link
+      href={CHAT_URL}
+      className={`inline-flex items-center gap-3 rounded-full border border-black/[0.06] bg-white/62 px-3 py-2 text-[13px] font-semibold text-black/78 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:-translate-y-0.5 hover:bg-white/78 ${className}`}
+    >
+      <span className="flex -space-x-2">
+        {USER_AVATARS.map((avatar, index) => (
+          <span
+            key={avatar.label}
+            className={`grid h-8 w-8 place-items-center rounded-full border border-white/80 bg-gradient-to-br ${avatar.style} text-[10px] font-extrabold uppercase tracking-[0.04em] ${index === 0 ? "text-black/70" : "text-white"}`}
+          >
+            {avatar.label}
+          </span>
+        ))}
+      </span>
+      <span className="whitespace-nowrap">&gt;25k users</span>
+      <ArrowRight className="h-3.5 w-3.5" />
+    </Link>
   );
 }
 
