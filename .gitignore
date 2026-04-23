@@ -1,7 +1,7 @@
 .env
 storage/
-frontend/node_modules/
-frontend/.next/
+node_modules/
+.next/
 *.pyc
 *.tsbuildinfo
 .DS_Store
