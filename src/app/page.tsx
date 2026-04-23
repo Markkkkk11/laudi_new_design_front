@@ -975,24 +975,48 @@ function LoaderLogoIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 312 322" aria-hidden="true">
       <defs>
-        <linearGradient id="loaderLogoGradient" x1="54" y1="28" x2="260" y2="294" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#050505" />
-          <stop offset="42%" stopColor="#050505" />
-          <stop offset="54%" stopColor="#ffe465" />
-          <stop offset="62%" stopColor="#74d8ff" />
-          <stop offset="74%" stopColor="#050505" />
-          <animateTransform
-            attributeName="gradientTransform"
-            type="translate"
-            values="-140 0; 140 0; -140 0"
-            dur="2.8s"
-            repeatCount="indefinite"
-          />
+        <linearGradient id="loaderLiquidGradient" x1="68" y1="300" x2="250" y2="54" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ff8a1f" />
+          <stop offset="30%" stopColor="#ffe96a" />
+          <stop offset="62%" stopColor="#7ae0ff" />
+          <stop offset="100%" stopColor="#8a77ff" />
         </linearGradient>
+        <linearGradient id="loaderWaveGradient" x1="40" y1="188" x2="274" y2="146" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.12)" />
+          <stop offset="48%" stopColor="rgba(255,255,255,0.82)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0.14)" />
+        </linearGradient>
+        <linearGradient id="loaderStrokeGradient" x1="72" y1="46" x2="236" y2="276" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffe96a" />
+          <stop offset="46%" stopColor="#7ae0ff" />
+          <stop offset="100%" stopColor="#8a77ff" />
+        </linearGradient>
+        <clipPath id="loaderLogoClip">
+          <path d={pathData} />
+        </clipPath>
       </defs>
       <path className="page-loader-mark-shadow" fill="#050505" fillOpacity="0.16" fillRule="evenodd" d={pathData} />
-      <path className="page-loader-mark-base" fill="currentColor" fillRule="evenodd" d={pathData} />
-      <path className="page-loader-mark-sheen" fill="url(#loaderLogoGradient)" fillRule="evenodd" d={pathData} />
+      <g className="page-loader-mark-fill" clipPath="url(#loaderLogoClip)">
+        <rect className="page-loader-fill-backdrop" x="0" y="0" width="312" height="322" />
+        <g className="page-loader-fill-liquid-wrap">
+          <rect className="page-loader-fill-liquid" x="-32" y="124" width="376" height="246" fill="url(#loaderLiquidGradient)" />
+          <path
+            className="page-loader-fill-wave page-loader-fill-wave-primary"
+            fill="url(#loaderWaveGradient)"
+            d="M -40 175 C 18 139, 74 201, 131 169 C 186 138, 245 201, 352 150 L 352 366 L -40 366 Z"
+          />
+          <path
+            className="page-loader-fill-wave page-loader-fill-wave-secondary"
+            fill="rgba(255,255,255,0.22)"
+            d="M -54 205 C 24 174, 82 240, 146 206 C 214 171, 268 234, 364 184 L 364 366 L -54 366 Z"
+          />
+          <ellipse className="page-loader-fill-orb page-loader-fill-orb-gold" cx="112" cy="202" rx="88" ry="68" />
+          <ellipse className="page-loader-fill-orb page-loader-fill-orb-blue" cx="226" cy="152" rx="82" ry="72" />
+        </g>
+      </g>
+      <path className="page-loader-mark-base" fill="currentColor" fillOpacity="0.12" fillRule="evenodd" d={pathData} />
+      <path className="page-loader-mark-outline" fill="none" stroke="url(#loaderStrokeGradient)" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" d={pathData} />
+      <path className="page-loader-mark-outline-soft" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" d={pathData} />
     </svg>
   );
 }
