@@ -216,13 +216,15 @@ export default function LandingPage() {
             <Reveal direction="up">
               <Link
                 href={CHAT_URL}
-                className="mb-8 inline-flex items-center rounded-full border border-black/[0.06] bg-white/44 px-3 py-2 text-[13px] font-semibold text-black/76 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:bg-white/70"
+                className="mb-8 inline-flex items-center rounded-full border border-black/[0.06] bg-white/68 px-2.5 py-1.5 text-[13px] font-semibold text-black/78 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:-translate-y-0.5 hover:bg-white/84"
               >
-                <span className="mr-2 rounded-full bg-black px-3 py-1 text-[11px] font-bold uppercase tracking-[0.02em] text-white">
-                  AI
+                <span className="mr-2 flex -space-x-2">
+                  <HeroAvatarOne />
+                  <HeroAvatarTwo />
+                  <HeroAvatarThree />
                 </span>
-                25 143+ пользователей
-                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+                &gt;25k users
+                <ArrowRight className="ml-2 h-3.5 w-3.5 text-black/62" />
               </Link>
             </Reveal>
 
@@ -231,14 +233,8 @@ export default function LandingPage() {
                 <span className="block">Один AI-ассистент.</span>
                 <span className="mt-1 block">Все лучшие модели внутри.</span>
               </h1>
-              <p className="mx-auto mt-7 max-w-[980px] text-[16px] font-medium leading-[1.28] tracking-[-0.025em] text-black/78 sm:text-[22px] lg:text-[28px]">
+              <p className="mx-auto mt-7 max-w-[940px] text-[15px] font-medium leading-[1.3] tracking-[-0.02em] text-black/78 sm:text-[20px] lg:text-[24px]">
                 Сэкономьте тысячи на подписках. Laudi объединяет Claude, GPT-4, Gemini Pro, Midjourney, Suno и другие в одном интерфейсе.
-              </p>
-            </Reveal>
-
-            <Reveal direction="up" delay={190}>
-              <p className="mt-7 max-w-[560px] text-[15px] font-medium leading-[1.38] tracking-[-0.01em] text-black/62 sm:text-[16px]">
-                Получайте Claude, ChatGPT, Gemini, Suno и другие модели для генерации изображений, видео, аудио без переходов между приложениями.
               </p>
             </Reveal>
 
@@ -822,6 +818,63 @@ function PromptComposer() {
         </div>
       </div>
     </div>
+  );
+}
+
+function HeroAvatarOne() {
+  return (
+    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#e7d6c8] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
+      <svg viewBox="0 0 28 28" className="h-full w-full" aria-hidden="true">
+        <defs>
+          <radialGradient id="hero-avatar-one-bg" cx="36%" cy="30%" r="72%">
+            <stop offset="0%" stopColor="#f5e4d4" />
+            <stop offset="100%" stopColor="#c5a791" />
+          </radialGradient>
+        </defs>
+        <rect width="28" height="28" rx="14" fill="url(#hero-avatar-one-bg)" />
+        <circle cx="14" cy="11" r="5.3" fill="#7f5d49" />
+        <path d="M5 28c1.9-5.8 6-8.6 9-8.6s7.1 2.8 9 8.6" fill="#f2ddcf" />
+        <path d="M8.2 12.2c0-4.2 2.6-6.8 5.8-6.8 3 0 5.6 2.3 5.6 6.2-1.4-1.2-2.7-1.7-4.4-1.7-2.7 0-4.5 1.2-7 2.3Z" fill="#5f4034" />
+      </svg>
+    </span>
+  );
+}
+
+function HeroAvatarTwo() {
+  return (
+    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#111111] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
+      <svg viewBox="0 0 28 28" className="h-full w-full" aria-hidden="true">
+        <defs>
+          <radialGradient id="hero-avatar-two-bg" cx="40%" cy="28%" r="76%">
+            <stop offset="0%" stopColor="#343434" />
+            <stop offset="100%" stopColor="#050505" />
+          </radialGradient>
+        </defs>
+        <rect width="28" height="28" rx="14" fill="url(#hero-avatar-two-bg)" />
+        <circle cx="14" cy="11.4" r="4.8" fill="#f0c48c" />
+        <path d="M5.5 28c1.6-5.1 5.1-8 8.5-8 3.5 0 6.9 2.9 8.5 8" fill="#2c2c2c" />
+        <path d="M8.3 10.7c.5-3.8 2.6-6 5.7-6 3.3 0 5.3 2.4 5.6 6.2-1.2-.9-2.8-1.8-5.3-1.8-2 0-3.8.6-6 1.6Z" fill="#111" />
+      </svg>
+    </span>
+  );
+}
+
+function HeroAvatarThree() {
+  return (
+    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#0c0c0c] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
+      <svg viewBox="0 0 28 28" className="h-full w-full" aria-hidden="true">
+        <defs>
+          <radialGradient id="hero-avatar-three-bg" cx="40%" cy="28%" r="76%">
+            <stop offset="0%" stopColor="#3a3a3a" />
+            <stop offset="100%" stopColor="#050505" />
+          </radialGradient>
+        </defs>
+        <rect width="28" height="28" rx="14" fill="url(#hero-avatar-three-bg)" />
+        <circle cx="14" cy="11.1" r="4.9" fill="#e5cdbf" />
+        <path d="M5.2 28c1.8-5.4 5.5-8.2 8.8-8.2 3.2 0 6.9 2.8 8.8 8.2" fill="#c9b0a0" />
+        <path d="M8 11.5c.7-4.3 2.9-6.8 6-6.8 3.1 0 5.3 2.2 5.8 6.3-1.4-1.3-3.1-2.1-5.4-2.1-1.8 0-3.8.8-6.4 2.6Z" fill="#161616" />
+      </svg>
+    </span>
   );
 }
 
