@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal, { RevealGroup } from "@/components/ui/Reveal";
 
@@ -202,64 +203,65 @@ export default function LandingPage() {
               href={CHAT_URL}
               className="site-cta"
             >
-              Попробовать бесплатно
+              <span className="hidden sm:inline">Попробовать бесплатно</span>
+              <span className="sm:hidden">Попробовать</span>
             </Link>
           </div>
         </div>
       </header>
 
       <main>
-        <section className="hero-sky relative min-h-[calc(100svh-64px)] overflow-hidden px-5 pb-10 pt-9 text-center sm:px-6 lg:pt-11">
+        <section className="hero-sky relative min-h-[calc(100svh-64px)] overflow-hidden px-4 pb-8 pt-6 text-center sm:px-6 sm:pb-10 sm:pt-9 lg:pt-11">
           <div className="hero-gradient-field" aria-hidden="true" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,rgba(247,247,244,0.96),rgba(247,247,244,0))]" />
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center">
             <Reveal direction="up">
               <Link
                 href={CHAT_URL}
-                className="mb-8 inline-flex items-center rounded-full border border-black/[0.06] bg-white/68 px-2.5 py-1.5 text-[13px] font-semibold text-black/78 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:-translate-y-0.5 hover:bg-white/84"
+                className="mb-6 inline-flex items-center rounded-full border border-black/[0.06] bg-white/68 px-2 py-1.5 text-[12px] font-semibold text-black/78 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:-translate-y-0.5 hover:bg-white/84 sm:mb-8 sm:px-2.5 sm:text-[13px]"
               >
                 <span className="mr-2 flex -space-x-2">
-                  <HeroAvatarOne />
-                  <HeroAvatarTwo />
-                  <HeroAvatarThree />
+                  <HeroAvatar src="/user1.jpg" alt="User avatar 1" />
+                  <HeroAvatar src="/user2.jpg" alt="User avatar 2" />
+                  <HeroAvatar src="/user3.jpg" alt="User avatar 3" />
                 </span>
-                &gt;25k users
+                &gt;25k пользователей
                 <ArrowRight className="ml-2 h-3.5 w-3.5 text-black/62" />
               </Link>
             </Reveal>
 
             <Reveal direction="up" delay={100}>
-              <h1 className="mt-3 max-w-[1120px] text-[46px] font-semibold leading-[0.94] tracking-[-0.055em] text-black sm:text-[64px] lg:text-[82px] xl:text-[92px]">
+              <h1 className="mt-2 max-w-[1120px] text-[38px] font-semibold leading-[0.94] tracking-[-0.055em] text-black sm:mt-3 sm:text-[64px] lg:text-[82px] xl:text-[92px]">
                 <span className="block">Один AI-ассистент.</span>
                 <span className="mt-1 block">Все лучшие модели внутри.</span>
               </h1>
-              <p className="mx-auto mt-7 max-w-[940px] text-[15px] font-medium leading-[1.3] tracking-[-0.02em] text-black/78 sm:text-[20px] lg:text-[24px]">
+              <p className="mx-auto mt-5 max-w-[940px] text-[14px] font-normal leading-[1.35] tracking-[-0.02em] text-black/78 sm:mt-7 sm:text-[20px] lg:text-[24px]">
                 Сэкономьте тысячи на подписках. Laudi объединяет Claude, GPT-4, Gemini Pro, Midjourney, Suno и другие в одном интерфейсе.
               </p>
             </Reveal>
 
-            <Reveal direction="up" delay={280} className="mt-10 w-full max-w-[760px]">
+            <Reveal direction="up" delay={280} className="mt-10 w-full max-w-[760px] sm:mt-14">
               <PromptComposer />
             </Reveal>
 
             <Reveal direction="up" delay={360}>
-              <div className="mt-9 w-full">
-                <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.16em] text-black/34">
+              <div className="mt-7 w-full sm:mt-9">
+                <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-black/34 sm:mb-5 sm:text-[12px]">
                   Почему laudi
                 </p>
-                <div className="mx-auto flex max-w-[680px] flex-wrap items-center justify-center gap-x-10 gap-y-4">
+                <div className="mx-auto flex max-w-[680px] flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-10 sm:gap-y-4">
                   {HERO_MARKS.map((mark) => (
-                    <span key={mark} className="text-[22px] font-extrabold tracking-[-0.06em] text-black/68 sm:text-[28px]">
+                    <span key={mark} className="text-[18px] font-extrabold tracking-[-0.06em] text-black/68 sm:text-[28px]">
                       {mark}
                     </span>
                   ))}
                 </div>
-                <div className="mx-auto mt-6 flex max-w-[620px] flex-wrap justify-center gap-2">
+                <div className="mx-auto mt-5 flex max-w-[620px] flex-wrap justify-center gap-2 sm:mt-6">
                   {STARTERS.slice(0, 4).map((starter) => (
                     <Link
                       href={CHAT_URL}
                       key={starter}
-                      className="rounded-full border border-black/[0.06] bg-white/38 px-4 py-2 text-[13px] font-semibold text-black/70 shadow-[0_14px_36px_rgba(30,42,48,0.04)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-white/72 hover:text-black"
+                      className="rounded-full border border-black/[0.06] bg-white/38 px-3 py-1.5 text-[12px] font-semibold text-black/70 shadow-[0_14px_36px_rgba(30,42,48,0.04)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-white/72 hover:text-black sm:px-4 sm:py-2 sm:text-[13px]"
                     >
                       {starter}
                     </Link>
@@ -439,10 +441,10 @@ function LimitlessBridge() {
   return (
     <section className="limitless-bridge relative overflow-hidden px-5 pb-0 pt-20 text-center sm:px-6 lg:pt-24">
       <Reveal direction="up" visibleClassName="gradient-title-visible">
-        <h2 className="gradient-title mx-auto max-w-6xl text-[52px] font-normal leading-[0.95] tracking-[-0.065em] sm:text-[92px] lg:text-[126px]">
+        <h2 className="gradient-title mx-auto hidden max-w-6xl text-[52px] font-normal leading-[0.95] tracking-[-0.065em] sm:block sm:text-[92px] lg:text-[126px]">
           Не только текст
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-[1.5] text-black/54">
+        <p className="mx-auto mt-6 hidden max-w-2xl text-[18px] leading-[1.5] text-black/54 sm:block">
           Создавайте в laudi все, что нужно: код, изображения, аудио и видео.
         </p>
       </Reveal>
@@ -491,6 +493,11 @@ function useStoryStackMotion() {
     const section = document.querySelector<HTMLElement>("[data-story-section]");
     const stage = section?.querySelector<HTMLElement>(".story-sticky-stage");
     const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-story-card]"));
+
+    if (!section || !stage || cards.length === 0) {
+      return;
+    }
+
     let step = 1;
     let stickyTop = 64;
     let progress = 0;
@@ -504,16 +511,17 @@ function useStoryStackMotion() {
     const smootherStep = (value: number) => value * value * value * (value * (value * 6 - 15) + 10);
 
     const syncLayout = () => {
-      if (!section || !stage || cards.length === 0) {
-        return;
-      }
-
+      const isCompactViewport = window.matchMedia("(max-width: 900px)").matches;
       stickyTop = Number.parseFloat(window.getComputedStyle(stage).top) || 64;
-      step = Math.min(Math.max(window.innerHeight * 0.82, 620), 900);
+      step = isCompactViewport
+        ? Math.min(Math.max(window.innerHeight * 0.56, 300), 420)
+        : Math.min(Math.max(window.innerHeight * 0.82, 620), 900);
       scrollDistance = Math.max(lastCardIndex * step, 1);
 
       const stickyHeight = Math.max(window.innerHeight - stickyTop, 1);
-      const releaseHold = Math.min(Math.max(window.innerHeight * 0.18, 120), 220);
+      const releaseHold = isCompactViewport
+        ? Math.min(Math.max(window.innerHeight * 0.1, 56), 96)
+        : Math.min(Math.max(window.innerHeight * 0.18, 120), 220);
       section.style.setProperty("--story-scroll-height", `${stickyHeight + scrollDistance + releaseHold}px`);
     };
 
@@ -753,6 +761,8 @@ function PromptComposer() {
   const [promptIndex, setPromptIndex] = useState(0);
   const [text, setText] = useState("");
   const [phase, setPhase] = useState<"typing" | "holding" | "deleting">("typing");
+  const [globeEnabled, setGlobeEnabled] = useState(false);
+  const [brainEnabled, setBrainEnabled] = useState(false);
   const prompt = PROMPTS[promptIndex];
 
   useEffect(() => {
@@ -785,26 +795,45 @@ function PromptComposer() {
   }, [phase, prompt, text]);
 
   return (
-    <div className="prompt-card relative rounded-[22px] border border-white/75 bg-white/74 p-5 text-left shadow-[0_24px_80px_rgba(35,38,44,0.10)] backdrop-blur-2xl">
-      <div className="min-h-[72px] px-2 pt-1 text-[21px] leading-[1.3] tracking-[-0.02em] text-[#60636d] sm:text-[25px]">
+    <div className="prompt-card relative rounded-[22px] border border-white/75 bg-white/74 p-4 text-left shadow-[0_24px_80px_rgba(35,38,44,0.10)] backdrop-blur-2xl sm:px-5 sm:pb-3 sm:pt-5">
+      <div className="min-h-[60px] px-1 pt-1 text-[17px] leading-[1.3] tracking-[-0.02em] text-[#60636d] sm:min-h-[72px] sm:px-2 sm:text-[25px]">
         <span>{text}</span>
         <span className="typing-caret" aria-hidden="true" />
       </div>
-      <div className="mt-4 flex items-center justify-between border-t border-black/[0.06] px-1 pt-4">
-        <div className="flex items-center gap-3">
+      <div className="mt-3 flex items-center justify-between gap-3 border-t border-black/[0.06] px-1 pt-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button aria-label="Добавить файл" className="grid h-8 w-8 place-items-center rounded-full text-black transition hover:bg-black/5">
             <PlusIcon />
           </button>
-          <button aria-label="Режим плана" className="inline-flex items-center gap-2 rounded-full text-[13px] font-semibold text-black/70">
-            <span className="h-5 w-9 rounded-full bg-black/[0.06] p-0.5">
-              <span className="block h-4 w-4 rounded-full bg-white shadow-sm" />
-            </span>
-            План
-            <InfoIcon />
+          <button
+            type="button"
+            aria-label="Интернет"
+            aria-pressed={globeEnabled}
+            onClick={() => setGlobeEnabled((value) => !value)}
+            className={`grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
+              globeEnabled
+                ? "border-[#b7dcff] bg-[#eaf4ff] text-[#45a0ff]"
+                : "border-transparent bg-[#f1f3f5] text-black/42 hover:bg-[#ebedf0]"
+            }`}
+          >
+            <GlobeSearchIcon />
+          </button>
+          <button
+            type="button"
+            aria-label="Рассуждение"
+            aria-pressed={brainEnabled}
+            onClick={() => setBrainEnabled((value) => !value)}
+            className={`grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
+              brainEnabled
+                ? "border-[#b7dcff] bg-[#eaf4ff] text-[#45a0ff]"
+                : "border-transparent bg-[#f1f3f5] text-black/42 hover:bg-[#ebedf0]"
+            }`}
+          >
+            <BrainIcon />
           </button>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
           <button aria-label="Голосовой ввод" className="grid h-8 w-8 place-items-center rounded-full text-black/60 transition hover:bg-black/5">
             <MicIcon />
           </button>
@@ -821,59 +850,10 @@ function PromptComposer() {
   );
 }
 
-function HeroAvatarOne() {
+function HeroAvatar({ src, alt }: { src: string; alt: string }) {
   return (
-    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#e7d6c8] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
-      <svg viewBox="0 0 28 28" className="h-full w-full" aria-hidden="true">
-        <defs>
-          <radialGradient id="hero-avatar-one-bg" cx="36%" cy="30%" r="72%">
-            <stop offset="0%" stopColor="#f5e4d4" />
-            <stop offset="100%" stopColor="#c5a791" />
-          </radialGradient>
-        </defs>
-        <rect width="28" height="28" rx="14" fill="url(#hero-avatar-one-bg)" />
-        <circle cx="14" cy="11" r="5.3" fill="#7f5d49" />
-        <path d="M5 28c1.9-5.8 6-8.6 9-8.6s7.1 2.8 9 8.6" fill="#f2ddcf" />
-        <path d="M8.2 12.2c0-4.2 2.6-6.8 5.8-6.8 3 0 5.6 2.3 5.6 6.2-1.4-1.2-2.7-1.7-4.4-1.7-2.7 0-4.5 1.2-7 2.3Z" fill="#5f4034" />
-      </svg>
-    </span>
-  );
-}
-
-function HeroAvatarTwo() {
-  return (
-    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#111111] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
-      <svg viewBox="0 0 28 28" className="h-full w-full" aria-hidden="true">
-        <defs>
-          <radialGradient id="hero-avatar-two-bg" cx="40%" cy="28%" r="76%">
-            <stop offset="0%" stopColor="#343434" />
-            <stop offset="100%" stopColor="#050505" />
-          </radialGradient>
-        </defs>
-        <rect width="28" height="28" rx="14" fill="url(#hero-avatar-two-bg)" />
-        <circle cx="14" cy="11.4" r="4.8" fill="#f0c48c" />
-        <path d="M5.5 28c1.6-5.1 5.1-8 8.5-8 3.5 0 6.9 2.9 8.5 8" fill="#2c2c2c" />
-        <path d="M8.3 10.7c.5-3.8 2.6-6 5.7-6 3.3 0 5.3 2.4 5.6 6.2-1.2-.9-2.8-1.8-5.3-1.8-2 0-3.8.6-6 1.6Z" fill="#111" />
-      </svg>
-    </span>
-  );
-}
-
-function HeroAvatarThree() {
-  return (
-    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#0c0c0c] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
-      <svg viewBox="0 0 28 28" className="h-full w-full" aria-hidden="true">
-        <defs>
-          <radialGradient id="hero-avatar-three-bg" cx="40%" cy="28%" r="76%">
-            <stop offset="0%" stopColor="#3a3a3a" />
-            <stop offset="100%" stopColor="#050505" />
-          </radialGradient>
-        </defs>
-        <rect width="28" height="28" rx="14" fill="url(#hero-avatar-three-bg)" />
-        <circle cx="14" cy="11.1" r="4.9" fill="#e5cdbf" />
-        <path d="M5.2 28c1.8-5.4 5.5-8.2 8.8-8.2 3.2 0 6.9 2.8 8.8 8.2" fill="#c9b0a0" />
-        <path d="M8 11.5c.7-4.3 2.9-6.8 6-6.8 3.1 0 5.3 2.2 5.8 6.3-1.4-1.3-3.1-2.1-5.4-2.1-1.8 0-3.8.8-6.4 2.6Z" fill="#161616" />
-      </svg>
+    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#ece7df] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
+      <Image src={src} alt={alt} width={28} height={28} className="h-full w-full object-cover" />
     </span>
   );
 }
@@ -1240,11 +1220,30 @@ function MicIcon() {
   );
 }
 
-function InfoIcon() {
+function GlobeSearchIcon() {
   return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-      <circle cx="6.5" cy="6.5" r="4.4" stroke="currentColor" strokeOpacity="0.45" strokeWidth="1" />
-      <path d="M6.5 6.1V8.65M6.5 4.45H6.51" stroke="currentColor" strokeOpacity="0.6" strokeWidth="1.2" strokeLinecap="round" />
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function BrainIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8M17.5 16a3.5 3.5 0 0 0 0 -7h-.5M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0M6.5 16a3.5 3.5 0 0 1 0 -7h.5M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
