@@ -16,6 +16,48 @@ const STARTERS = ["Чат", "Изображения", "Презентации", 
 
 const HERO_MARKS = ["ChatGPT", "Claude", "Gemini", "Suno", "NanoBanana"];
 const CHAT_URL = "https://chat.laudi.ai/";
+const MODEL_COLUMNS = [
+  {
+    name: "GPT-5.5",
+    tone: "bg-[#eef45f]",
+    rows: [
+      { titleWidth: "w-24", bodyWidth: "w-16", status: "Готово", statusTone: "bg-[#8ee4a7] text-black" },
+      { titleWidth: "w-16", bodyWidth: "w-24", status: "Текст", statusTone: "bg-[#c8a7ff] text-black" },
+      { titleWidth: "w-20", bodyWidth: "w-12", status: "Код", statusTone: "bg-[#ef8064] text-black" },
+      { titleWidth: "w-14", bodyWidth: "w-20", status: "SEO", statusTone: "bg-[#8ee4a7] text-black" },
+    ],
+  },
+  {
+    name: "Claude 4.7",
+    tone: "bg-[#d8c8ff]",
+    rows: [
+      { titleWidth: "w-20", bodyWidth: "w-24", status: "Анализ", statusTone: "bg-[#8ee4a7] text-black" },
+      { titleWidth: "w-14", bodyWidth: "w-16", status: "Long", statusTone: "bg-[#c8a7ff] text-black" },
+      { titleWidth: "w-24", bodyWidth: "w-12", status: "Docs", statusTone: "bg-[#ef8064] text-black" },
+      { titleWidth: "w-16", bodyWidth: "w-20", status: "Brain", statusTone: "bg-[#8ee4a7] text-black" },
+    ],
+  },
+  {
+    name: "Gemini 3.1",
+    tone: "bg-[#ef8064]",
+    rows: [
+      { titleWidth: "w-20", bodyWidth: "w-16", status: "Media", statusTone: "bg-[#8ee4a7] text-black" },
+      { titleWidth: "w-12", bodyWidth: "w-24", status: "Vision", statusTone: "bg-[#c8a7ff] text-black" },
+      { titleWidth: "w-24", bodyWidth: "w-14", status: "Search", statusTone: "bg-[#ef8064] text-black" },
+      { titleWidth: "w-16", bodyWidth: "w-20", status: "Fast", statusTone: "bg-[#8ee4a7] text-black" },
+    ],
+  },
+  {
+    name: "Suno",
+    tone: "bg-[#9ee8bf]",
+    rows: [
+      { titleWidth: "w-20", bodyWidth: "w-12", status: "Audio", statusTone: "bg-[#8ee4a7] text-black" },
+      { titleWidth: "w-24", bodyWidth: "w-20", status: "Music", statusTone: "bg-[#c8a7ff] text-black" },
+      { titleWidth: "w-14", bodyWidth: "w-16", status: "Voice", statusTone: "bg-[#ef8064] text-black" },
+      { titleWidth: "w-20", bodyWidth: "w-14", status: "Mix", statusTone: "bg-[#8ee4a7] text-black" },
+    ],
+  },
+];
 
 const FEATURE_STORIES = [
   {
@@ -60,35 +102,28 @@ const FEATURES = [
 const AI_TOOLS = [
   {
     name: "Текстовые AI-помощники",
-    label: "ChatGPT, Claude, Gemini",
+    label: "Чат-модели",
     desc: "Пишите тексты, разбирайте документы, код, идеи и рабочие задачи в одном чате.",
     points: ["длинный контекст", "ресерч", "код", "ежедневные задачи"],
     visual: "chat",
   },
   {
-    name: "Генерация картинок",
-    label: "Изображения",
-    desc: "Создавайте визуалы для рекламы, презентаций, соцсетей, интерфейсов и быстрых концептов.",
-    points: ["баннеры", "логотипы", "обложки", "референсы"],
+    name: "Картинки и видео",
+    label: "Визуалы",
+    desc: "Создавайте изображения, баннеры, короткие видео-сценарии и motion-заготовки без отдельных сервисов.",
+    points: ["баннеры", "обложки", "сториборды", "motion"],
     visual: "image",
   },
   {
-    name: "Видео",
-    label: "Ролики и motion-идеи",
-    desc: "Готовьте короткие видео-сценарии, раскадровки и визуальные заготовки без отдельных сервисов.",
-    points: ["сценарии", "сториборды", "промо", "motion"],
-    visual: "video",
-  },
-  {
     name: "Песни и аудио",
-    label: "Suno и аудио-идеи",
+    label: "Аудио",
     desc: "Генерируйте музыку, джинглы, саунд-дизайн и быстрые аудио-наброски для проектов.",
     points: ["музыка", "джинглы", "саунд", "идеи"],
     visual: "audio",
   },
   {
     name: "Презентации",
-    label: "Структура и слайды",
+    label: "Слайды",
     desc: "Собирайте логику питча, тексты для слайдов, тезисы и визуальные блоки для выступлений.",
     points: ["питч", "слайды", "структура", "тезисы"],
     visual: "deck",
@@ -139,6 +174,7 @@ export default function LandingPage() {
   const [loaderVisible, setLoaderVisible] = useState(true);
 
   useHeroScrollGradient();
+  useSendoffWaveReveal();
 
   useEffect(() => {
     const startedAt = window.performance.now();
@@ -223,7 +259,7 @@ export default function LandingPage() {
                 <span className="mr-2 flex -space-x-2">
                   <HeroAvatar src="/user1.jpg" alt="User avatar 1" />
                   <HeroAvatar src="/user2.jpg" alt="User avatar 2" />
-                  <HeroAvatar src="/user3.jpg" alt="User avatar 3" />
+                  <HeroAvatar src="/user4.jpeg" alt="User avatar 4" />
                 </span>
                 &gt;25k пользователей
                 <ArrowRight className="ml-2 h-3.5 w-3.5 text-black/62" />
@@ -249,7 +285,7 @@ export default function LandingPage() {
                 <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-black/34 sm:mb-5 sm:text-[12px]">
                   Почему laudi
                 </p>
-                <div className="mx-auto flex max-w-[680px] flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:gap-x-10 sm:gap-y-4">
+                <div className="mx-auto hidden max-w-[680px] flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:flex sm:gap-x-10 sm:gap-y-4">
                   {HERO_MARKS.map((mark) => (
                     <span key={mark} className="text-[18px] font-extrabold tracking-[-0.06em] text-black/68 sm:text-[28px]">
                       {mark}
@@ -288,7 +324,7 @@ export default function LandingPage() {
                   <LaudiOrbitMark />
                 </article>
 
-                <div className="agents-grid-panel">
+                <div className="agents-grid-panel hidden md:block">
                   <RevealGroup stagger={70} className="agents-grid">
                     {FEATURES.map((feature) => (
                       <article key={feature.name} className="agent-tile">
@@ -613,7 +649,10 @@ function FeatureVisual({ type }: { type: string }) {
         <div className="visual-topbar">
           <span className="visual-face">L</span>
           <span>laudi workspace</span>
-          <span className="ml-auto h-7 w-7 rounded-full bg-white/20" />
+          <div className="ml-auto flex items-center gap-2 text-[11px] font-medium text-white/42">
+            <span className="rounded-full border border-white/10 px-2 py-1">4 active</span>
+            <span className="h-7 w-7 rounded-full bg-white/20" />
+          </div>
         </div>
         <div className="px-6 pb-6 pt-5">
           <div className="mb-5 flex items-center justify-between">
@@ -624,17 +663,24 @@ function FeatureVisual({ type }: { type: string }) {
             </div>
           </div>
           <div className="grid min-w-[680px] grid-cols-4 gap-3">
-            {["ChatGPT", "Claude", "Gemini", "Suno"].map((column, i) => (
-              <div key={column}>
-                <div className={`mb-2 rounded-t-[6px] px-3 py-2 text-[12px] font-bold ${i === 0 ? "bg-[#eef45f]" : i === 1 ? "bg-[#d8c8ff]" : i === 2 ? "bg-[#ef8064]" : "bg-[#9ee8bf]"}`}>
-                  {column} {i + 3}
+            {MODEL_COLUMNS.map((column) => (
+              <div key={column.name}>
+                <div className={`mb-2 flex items-center justify-between rounded-t-[6px] px-3 py-2 text-[12px] font-bold ${column.tone}`}>
+                  <span>{column.name}</span>
+                  <span className="rounded-full bg-black/10 px-1.5 py-0.5 text-[9px] uppercase tracking-[0.08em] text-black/70">
+                    Live
+                  </span>
                 </div>
-                {[0, 1, 2, 3, 4].map((item) => (
-                  <div key={item} className="mb-2 rounded-[4px] bg-white/[0.09] p-3 text-[11px] text-white/62">
-                    <div className="mb-2 h-2 w-20 rounded-full bg-white/18" />
-                    <span className={`rounded-full px-2 py-0.5 text-[9px] ${item % 3 === 0 ? "bg-[#8ee4a7] text-black" : item % 3 === 1 ? "bg-[#c8a7ff]" : "bg-[#ef8064]"}`}>
-                      {item % 3 === 0 ? "Готово" : item % 3 === 1 ? "В работе" : "Промпт"}
-                    </span>
+                {column.rows.map((row, index) => (
+                  <div key={`${column.name}-${index}`} className="mb-2 rounded-[6px] border border-white/[0.04] bg-white/[0.09] p-3 text-[11px] text-white/62 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                    <div className={`mb-2 h-2 ${row.titleWidth} rounded-full bg-white/18`} />
+                    <div className={`mb-3 h-2 ${row.bodyWidth} rounded-full bg-white/10`} />
+                    <div className="flex items-center justify-between">
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-semibold ${row.statusTone}`}>
+                        {row.status}
+                      </span>
+                      <span className="h-2 w-2 rounded-full bg-white/20" />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -754,6 +800,37 @@ function useHeroScrollGradient() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
+  }, []);
+}
+
+function useSendoffWaveReveal() {
+  useEffect(() => {
+    const section = document.querySelector<HTMLElement>(".sendoff-section");
+
+    if (!section) {
+      return;
+    }
+
+    const reveal = () => section.classList.add("is-visible");
+
+    if (!("IntersectionObserver" in window)) {
+      reveal();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          reveal();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.24 }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
   }, []);
 }
 
