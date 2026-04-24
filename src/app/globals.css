@@ -1527,9 +1527,9 @@ body {
 }
 
 .faq-plus svg {
-  width: 26px;
-  height: 26px;
-  stroke-width: 1.6;
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.1;
 }
 
 .faq-plus.is-open {
