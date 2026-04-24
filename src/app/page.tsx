@@ -115,6 +115,14 @@ const AI_TOOLS = [
     visual: "image",
   },
   {
+    name: "Видео",
+    label: "Видео",
+    desc: "Готовьте короткие видео-сценарии, раскадровки и визуальные заготовки без отдельных сервисов.",
+    points: ["сценарии", "сториборды", "промо", "motion"],
+    visual: "video",
+    desktopOnly: true,
+  },
+  {
     name: "Песни и аудио",
     label: "Аудио",
     desc: "Генерируйте музыку, джинглы, саунд-дизайн и быстрые аудио-наброски для проектов.",
@@ -365,7 +373,7 @@ export default function LandingPage() {
               {AI_TOOLS.map((tool) => (
                 <article
                   key={tool.name}
-                  className="ai-tool-card"
+                  className={`ai-tool-card ${tool.desktopOnly ? "ai-tool-card-desktop-only" : ""}`}
                 >
                   <AiToolVisual type={tool.visual} />
                   <div className="ai-tool-copy">

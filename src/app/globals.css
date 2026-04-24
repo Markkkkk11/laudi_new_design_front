@@ -1238,6 +1238,10 @@ body {
   box-shadow: 0 30px 78px rgba(30, 36, 30, 0.085);
 }
 
+.ai-tool-card-desktop-only {
+  display: none;
+}
+
 .ai-tool-visual {
   width: 100%;
   aspect-ratio: 260 / 164;
@@ -1309,6 +1313,10 @@ body {
 @media (min-width: 768px) {
   .ai-tools-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ai-tool-card-desktop-only {
+    display: flex;
   }
 }
 
