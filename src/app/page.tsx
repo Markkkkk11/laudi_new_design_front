@@ -223,16 +223,28 @@ export default function LandingPage() {
 
           <nav className="site-nav">
             <a href="#how">
-              Возможности <ChevronDown />
+              <span className="site-nav-label" data-label="Возможности">
+                <span>Возможности</span>
+                <span aria-hidden="true">Возможности</span>
+              </span>
             </a>
             <a href="#agents">
-              AI-инструменты <ChevronDown />
+              <span className="site-nav-label" data-label="AI-инструменты">
+                <span>AI-инструменты</span>
+                <span aria-hidden="true">AI-инструменты</span>
+              </span>
             </a>
             <a href="#tools">
-              Инструменты <ChevronDown />
+              <span className="site-nav-label" data-label="Инструменты">
+                <span>Инструменты</span>
+                <span aria-hidden="true">Инструменты</span>
+              </span>
             </a>
             <a href="#faq">
-              Вопросы <ChevronDown />
+              <span className="site-nav-label" data-label="Вопросы">
+                <span>Вопросы</span>
+                <span aria-hidden="true">Вопросы</span>
+              </span>
             </a>
           </nav>
 
@@ -290,7 +302,7 @@ export default function LandingPage() {
 
             <Reveal direction="up" delay={360}>
               <div className="mt-7 w-full sm:mt-9">
-                <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-black/34 sm:mb-5 sm:text-[12px]">
+                <p className="mb-4 hidden text-[11px] font-bold uppercase tracking-[0.16em] text-black/34 sm:mb-5 sm:block sm:text-[12px]">
                   Почему laudi
                 </p>
                 <div className="mx-auto hidden max-w-[680px] flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:flex sm:gap-x-10 sm:gap-y-4">
@@ -300,7 +312,7 @@ export default function LandingPage() {
                     </span>
                   ))}
                 </div>
-                <div className="mx-auto mt-5 flex max-w-[620px] flex-wrap justify-center gap-2 sm:mt-6">
+                <div className="hero-starters mx-auto mt-5 flex max-w-[620px] flex-wrap justify-center gap-2 sm:mt-6">
                   {STARTERS.slice(0, 4).map((starter) => (
                     <Link
                       href={CHAT_URL}
@@ -895,10 +907,10 @@ function PromptComposer() {
             aria-label="Интернет"
             aria-pressed={globeEnabled}
             onClick={() => setGlobeEnabled((value) => !value)}
-            className={`grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
+            className={`prompt-mode-button grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
               globeEnabled
-                ? "border-[#b7dcff] bg-[#eaf4ff] text-[#45a0ff]"
-                : "border-transparent bg-[#f1f3f5] text-black/42 hover:bg-[#ebedf0]"
+                ? "is-active border-transparent text-[#45a0ff]"
+                : "border-transparent text-black/42"
             }`}
           >
             <GlobeSearchIcon />
@@ -908,10 +920,10 @@ function PromptComposer() {
             aria-label="Рассуждение"
             aria-pressed={brainEnabled}
             onClick={() => setBrainEnabled((value) => !value)}
-            className={`grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
+            className={`prompt-mode-button grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
               brainEnabled
-                ? "border-[#b7dcff] bg-[#eaf4ff] text-[#45a0ff]"
-                : "border-transparent bg-[#f1f3f5] text-black/42 hover:bg-[#ebedf0]"
+                ? "is-active border-transparent text-[#45a0ff]"
+                : "border-transparent text-black/42"
             }`}
           >
             <BrainIcon />
@@ -1255,14 +1267,6 @@ function LaudiOrbitMark() {
   );
 }
 
-function ChevronDown() {
-  return (
-    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-      <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 function GlobeIcon() {
   return (
     <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
@@ -1298,9 +1302,8 @@ function PlusIcon() {
 
 function MicIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-      <path d="M7.5 9.2C6.35 9.2 5.45 8.3 5.45 7.15V3.9C5.45 2.75 6.35 1.85 7.5 1.85C8.65 1.85 9.55 2.75 9.55 3.9V7.15C9.55 8.3 8.65 9.2 7.5 9.2Z" stroke="currentColor" strokeWidth="1.35" />
-      <path d="M3.7 6.8C3.7 8.9 5.35 10.65 7.5 10.65M11.3 6.8C11.3 8.9 9.65 10.65 7.5 10.65M7.5 10.65V13.15" stroke="currentColor" strokeWidth="1.35" strokeLinecap="round" />
+    <svg width="22" height="22" viewBox="-5 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M6 7c0-2.762 2.239-5 5-5s5 2.238 5 5v10c0 2.762-2.239 5-5 5s-5-2.238-5-5V7Zm5 17c3.866 0 7-3.134 7-7V7c0-3.866-3.134-7-7-7S4 3.134 4 7v10c0 3.866 3.134 7 7 7Zm11-5h-2c-.911 4.007-4.718 7-9 7s-8.089-2.993-9-7H0c.883 4.799 5.063 8.51 10 8.955V30H9c-.552 0-1 .448-1 1s.448 1 1 1h4c.552 0 1-.447 1-1s-.448-1-1-1h-1v-2.045c4.937-.445 9.117-4.156 10-8.955Z" />
     </svg>
   );
 }

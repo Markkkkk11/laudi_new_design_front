@@ -139,6 +139,21 @@ body {
   animation: caret-blink 900ms steps(1) infinite;
 }
 
+.prompt-mode-button {
+  background: transparent;
+  box-shadow: none;
+}
+
+.prompt-mode-button:hover {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.74);
+  transform: translateY(-1px);
+}
+
+.prompt-mode-button.is-active:hover {
+  color: #2f95ff;
+}
+
 @keyframes caret-blink {
   50% {
     opacity: 0;
@@ -461,11 +476,43 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  overflow: hidden;
   color: rgba(0, 0, 0, 0.82);
   font-size: 15px;
   font-weight: 500;
   line-height: 1;
   transition: color 160ms ease;
+}
+
+.site-nav-label {
+  position: relative;
+  display: inline-grid;
+  overflow: hidden;
+  line-height: 1.08;
+}
+
+.site-nav-label span {
+  grid-area: 1 / 1;
+  transition: transform 360ms cubic-bezier(0.19, 1, 0.22, 1), opacity 360ms ease;
+}
+
+.site-nav-label span:first-child {
+  transform: translateY(0);
+}
+
+.site-nav-label span:last-child {
+  transform: translateY(-115%);
+  opacity: 0;
+}
+
+.site-nav a:hover .site-nav-label span:first-child {
+  transform: translateY(115%);
+  opacity: 0;
+}
+
+.site-nav a:hover .site-nav-label span:last-child {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .site-nav a:hover {
@@ -548,6 +595,23 @@ body {
     min-height: 34px;
     padding: 0 12px;
     font-size: 12px;
+  }
+
+  .hero-starters {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding-inline: 1px;
+  }
+
+  .hero-starters a {
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 7px 6px;
+    text-align: center;
+    font-size: clamp(10px, 3vw, 12px);
+    line-height: 1;
+    white-space: nowrap;
   }
 }
 
@@ -1242,6 +1306,10 @@ body {
   display: none;
 }
 
+.ai-tools-grid > div:has(.ai-tool-card-desktop-only) {
+  display: none;
+}
+
 .ai-tool-visual {
   width: 100%;
   aspect-ratio: 260 / 164;
@@ -1318,6 +1386,10 @@ body {
   .ai-tool-card-desktop-only {
     display: flex;
   }
+
+  .ai-tools-grid > div:has(.ai-tool-card-desktop-only) {
+    display: block;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -1327,12 +1399,12 @@ body {
     padding-bottom: 28px;
   }
 
-  .ai-tool-card:nth-child(2),
-  .ai-tool-card:nth-child(4) {
+  .ai-tools-grid > div:nth-child(2) .ai-tool-card,
+  .ai-tools-grid > div:nth-child(4) .ai-tool-card {
     margin-top: 28px;
   }
 
-  .ai-tool-card:nth-child(3) {
+  .ai-tools-grid > div:nth-child(3) .ai-tool-card {
     margin-top: 12px;
   }
 }
@@ -1537,7 +1609,7 @@ body {
 .faq-plus svg {
   width: 24px;
   height: 24px;
-  stroke-width: 1.1;
+  stroke-width: 0.85;
 }
 
 .faq-plus.is-open {
