@@ -59,9 +59,7 @@ body {
 }
 
 .hero-sky {
-  background:
-    radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.98), transparent 34%),
-    linear-gradient(180deg, #fafafa 0%, #f8f8f6 48%, #f7f7f4 100%);
+  background: #f7f7f4;
 }
 
 .hero-sky::after {
@@ -77,43 +75,48 @@ body {
   mask-image: linear-gradient(to bottom, transparent 0%, #000 32%, transparent 88%);
 }
 
-.hero-gradient-field {
+.hero-photo-field {
   position: absolute;
   z-index: 0;
-  left: -8vw;
-  right: -8vw;
-  bottom: calc(-82px + (var(--hero-scroll) * 38px));
-  height: clamp(390px, 42vw, 540px);
+  inset: 0;
   border-radius: 0;
   pointer-events: none;
-  opacity: calc(0.72 - (var(--hero-scroll) * 0.16));
-  filter: blur(54px) saturate(1);
-  transform: translateY(calc(var(--hero-scroll) * 18px)) scale(calc(1 + (var(--hero-scroll) * 0.04)));
-  transform-origin: bottom center;
-  transition: opacity 180ms ease-out, filter 180ms ease-out;
+  opacity: calc(1 - (var(--hero-scroll) * 0.08));
+  transform: translateY(calc(var(--hero-scroll) * 14px)) scale(calc(1.02 + (var(--hero-scroll) * 0.025)));
+  transform-origin: center;
+  transition: opacity 180ms ease-out;
   background:
-    radial-gradient(ellipse at 3% 82%, rgba(255, 242, 88, 0.72) 0 16%, rgba(255, 242, 88, 0.28) 39%, transparent 68%),
-    radial-gradient(ellipse at 25% 78%, rgba(255, 190, 128, 0.4) 0 16%, rgba(255, 190, 128, 0.16) 40%, transparent 68%),
-    radial-gradient(ellipse at 45% 76%, rgba(238, 160, 218, 0.5) 0 18%, rgba(238, 160, 218, 0.18) 42%, transparent 72%),
-    radial-gradient(ellipse at 62% 72%, rgba(160, 145, 255, 0.4) 0 16%, rgba(160, 145, 255, 0.14) 42%, transparent 70%),
-    radial-gradient(ellipse at 89% 70%, rgba(119, 218, 255, 0.56) 0 18%, rgba(119, 218, 255, 0.2) 44%, transparent 72%),
-    linear-gradient(90deg, rgba(255, 244, 105, 0.42), rgba(244, 174, 219, 0.36) 48%, rgba(128, 220, 255, 0.42));
-  box-shadow:
-    0 -18px 130px rgba(255, 255, 255, 0.62),
-    0 48px 170px rgba(145, 219, 255, 0.12),
-    0 30px 150px rgba(246, 171, 217, 0.1);
-  animation: gradient-breathe 9s ease-in-out infinite;
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.52) 22%, #000 44%, #000 100%);
+    linear-gradient(180deg, rgba(247, 247, 244, 0.74) 0%, rgba(247, 247, 244, 0.12) 32%, rgba(247, 247, 244, 0.46) 100%),
+    linear-gradient(90deg, rgba(247, 247, 244, 0.42) 0%, rgba(247, 247, 244, 0.08) 38%, rgba(247, 247, 244, 0.42) 100%),
+    url("/bgtest2.avif") center bottom / cover no-repeat;
 }
 
-.hero-gradient-field::after {
+.hero-photo-field::after {
   content: "";
   position: absolute;
-  inset: 0 8% 30%;
+  inset: 0;
   border-radius: inherit;
-  background: radial-gradient(ellipse at 50% 28%, rgba(255, 255, 255, 0.56), rgba(255, 255, 255, 0.18) 38%, transparent 72%);
-  filter: blur(34px);
-  opacity: 0.92;
+  background:
+    linear-gradient(180deg, rgba(247, 247, 244, 0.58) 0%, transparent 18%, transparent 72%, #f7f7f4 100%),
+    radial-gradient(ellipse at 50% 28%, rgba(255, 255, 255, 0.24), transparent 58%);
+}
+
+.hero-users-pill {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(90deg, #5d7cff, #ef5e88, #ffad4d) border-box;
+  color: transparent;
+}
+
+.hero-users-pill span {
+  background: linear-gradient(90deg, #5b76ff 0%, #ef477e 52%, #f2a33d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero-users-pill svg {
+  color: #34363d;
 }
 
 .prompt-card {
@@ -124,9 +127,16 @@ body {
   content: "";
   position: absolute;
   inset: 1px;
-  border-radius: 21px;
+  border-radius: 23px;
   pointer-events: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.prompt-card-surface {
+  position: relative;
+  z-index: 1;
 }
 
 .typing-caret {
@@ -583,8 +593,14 @@ body {
 
   .site-header-shell {
     min-height: 52px;
-    gap: 10px;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    gap: 8px;
     padding: 5px 6px 5px 10px;
+  }
+
+  .site-actions {
+    min-width: 0;
   }
 
   .site-brand span {
@@ -593,8 +609,11 @@ body {
 
   .site-cta {
     min-height: 34px;
-    padding: 0 12px;
+    max-width: 128px;
+    padding: 0 10px;
     font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .hero-starters {
@@ -1844,12 +1863,9 @@ body {
 }
 
 @media (max-width: 640px) {
-  .hero-gradient-field {
-    left: -38vw;
-    right: -38vw;
-    bottom: calc(-74px + (var(--hero-scroll) * 32px));
-    height: 360px;
-    filter: blur(46px) saturate(1);
+  .hero-photo-field {
+    background-position: center bottom;
+    opacity: calc(0.94 - (var(--hero-scroll) * 0.08));
   }
 }
 

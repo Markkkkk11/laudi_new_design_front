@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import Reveal, { RevealGroup } from "@/components/ui/Reveal";
 
@@ -268,35 +267,30 @@ export default function LandingPage() {
 
       <main>
         <section className="hero-sky relative min-h-[calc(100svh-64px)] overflow-hidden px-4 pb-8 pt-6 text-center sm:px-6 sm:pb-10 sm:pt-9 lg:pt-11">
-          <div className="hero-gradient-field" aria-hidden="true" />
+          <div className="hero-photo-field" aria-hidden="true" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,rgba(247,247,244,0.96),rgba(247,247,244,0))]" />
-          <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center">
+          <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center">
             <Reveal direction="up">
               <Link
                 href={CHAT_URL}
-                className="mb-6 inline-flex items-center rounded-full border border-black/[0.06] bg-white/68 px-2 py-1.5 text-[12px] font-semibold text-black/78 shadow-[0_18px_50px_rgba(40,44,50,0.06)] backdrop-blur-2xl transition hover:-translate-y-0.5 hover:bg-white/84 sm:mb-8 sm:px-2.5 sm:text-[13px]"
+                className="hero-users-pill mb-6 inline-flex items-center rounded-full px-4 py-2 text-[12px] font-semibold shadow-[0_18px_50px_rgba(40,44,50,0.08)] backdrop-blur-2xl transition hover:-translate-y-0.5 sm:mb-8 sm:px-5 sm:text-[13px]"
               >
-                <span className="mr-2 flex -space-x-2">
-                  <HeroAvatar src="/user1.jpg" alt="User avatar 1" />
-                  <HeroAvatar src="/user2.jpg" alt="User avatar 2" />
-                  <HeroAvatar src="/user4.jpeg" alt="User avatar 4" />
-                </span>
-                &gt;25k пользователей
-                <ArrowRight className="ml-2 h-3.5 w-3.5 text-black/62" />
+                <span>&gt;25k пользователей</span>
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Link>
             </Reveal>
 
             <Reveal direction="up" delay={100}>
-              <h1 className="mt-2 max-w-[1120px] text-[38px] font-semibold leading-[0.94] tracking-[-0.055em] text-black sm:mt-3 sm:text-[64px] lg:text-[82px] xl:text-[92px]">
+              <h1 className="mt-2 w-[min(100%,340px)] text-[34px] font-semibold leading-[1] tracking-normal text-black sm:mt-3 sm:w-full sm:max-w-[1120px] sm:text-[64px] sm:leading-[0.94] lg:text-[82px] xl:text-[92px]">
                 <span className="block">Один AI-ассистент.</span>
                 <span className="mt-1 block">Все лучшие модели внутри.</span>
               </h1>
-              <p className="mx-auto mt-5 max-w-[940px] text-[14px] font-normal leading-[1.35] tracking-[-0.02em] text-black/78 sm:mt-7 sm:text-[20px] lg:text-[24px]">
+              <p className="mx-auto mt-5 w-[min(100%,330px)] text-[14px] font-normal leading-[1.35] tracking-normal text-black/78 sm:mt-7 sm:w-full sm:max-w-[940px] sm:text-[20px] lg:text-[24px]">
                 Сэкономьте тысячи на подписках. Laudi объединяет Claude, GPT-4, Gemini Pro, Midjourney, Suno и другие в одном интерфейсе.
               </p>
             </Reveal>
 
-            <Reveal direction="up" delay={280} className="mt-10 w-full max-w-[760px] sm:mt-14">
+            <Reveal direction="up" delay={280} className="mt-10 w-[min(100%,340px)] sm:mt-14 sm:w-full sm:max-w-[760px]">
               <PromptComposer />
             </Reveal>
 
@@ -892,66 +886,60 @@ function PromptComposer() {
   }, [phase, prompt, text]);
 
   return (
-    <div className="prompt-card relative rounded-[22px] border border-white/75 bg-white/74 p-4 text-left shadow-[0_24px_80px_rgba(35,38,44,0.10)] backdrop-blur-2xl sm:px-5 sm:pb-3 sm:pt-5">
-      <div className="min-h-[60px] px-1 pt-1 text-[17px] leading-[1.3] tracking-[-0.02em] text-[#60636d] sm:min-h-[72px] sm:px-2 sm:text-[25px]">
-        <span>{text}</span>
-        <span className="typing-caret" aria-hidden="true" />
-      </div>
-      <div className="mt-3 flex items-center justify-between gap-3 border-t border-black/[0.06] px-1 pt-3">
-        <div className="flex items-center gap-2 sm:gap-3">
-          <button aria-label="Добавить файл" className="grid h-8 w-8 place-items-center rounded-full text-black transition hover:bg-black/5">
-            <PlusIcon />
-          </button>
-          <button
-            type="button"
-            aria-label="Интернет"
-            aria-pressed={globeEnabled}
-            onClick={() => setGlobeEnabled((value) => !value)}
-            className={`prompt-mode-button grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
-              globeEnabled
-                ? "is-active border-transparent text-[#45a0ff]"
-                : "border-transparent text-black/42"
-            }`}
-          >
-            <GlobeSearchIcon />
-          </button>
-          <button
-            type="button"
-            aria-label="Рассуждение"
-            aria-pressed={brainEnabled}
-            onClick={() => setBrainEnabled((value) => !value)}
-            className={`prompt-mode-button grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
-              brainEnabled
-                ? "is-active border-transparent text-[#45a0ff]"
-                : "border-transparent text-black/42"
-            }`}
-          >
-            <BrainIcon />
-          </button>
+    <div className="prompt-card relative rounded-[24px] border border-white/55 bg-white/24 p-3 text-left shadow-[0_26px_86px_rgba(35,38,44,0.08)] backdrop-blur-2xl sm:p-4">
+      <div className="prompt-card-surface rounded-[19px] bg-white px-4 pb-3 pt-4 shadow-[0_18px_48px_rgba(35,38,44,0.07)] sm:px-5 sm:pb-3 sm:pt-5">
+        <div className="min-h-[60px] px-1 pt-1 text-[17px] leading-[1.3] tracking-[-0.02em] text-[#60636d] sm:min-h-[72px] sm:px-2 sm:text-[25px]">
+          <span>{text}</span>
+          <span className="typing-caret" aria-hidden="true" />
         </div>
+        <div className="mt-3 flex items-center justify-between gap-3 border-t border-black/[0.06] px-1 pt-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button aria-label="Добавить файл" className="grid h-8 w-8 place-items-center rounded-full text-black transition hover:bg-black/5">
+              <PlusIcon />
+            </button>
+            <button
+              type="button"
+              aria-label="Интернет"
+              aria-pressed={globeEnabled}
+              onClick={() => setGlobeEnabled((value) => !value)}
+              className={`prompt-mode-button grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
+                globeEnabled
+                  ? "is-active border-transparent text-[#45a0ff]"
+                  : "border-transparent text-black/42"
+              }`}
+            >
+              <GlobeSearchIcon />
+            </button>
+            <button
+              type="button"
+              aria-label="Рассуждение"
+              aria-pressed={brainEnabled}
+              onClick={() => setBrainEnabled((value) => !value)}
+              className={`prompt-mode-button grid h-10 w-10 place-items-center rounded-full border transition sm:h-11 sm:w-11 ${
+                brainEnabled
+                  ? "is-active border-transparent text-[#45a0ff]"
+                  : "border-transparent text-black/42"
+              }`}
+            >
+              <BrainIcon />
+            </button>
+          </div>
 
-        <div className="flex items-center justify-end gap-2">
-          <button aria-label="Голосовой ввод" className="grid h-8 w-8 place-items-center rounded-full text-black/60 transition hover:bg-black/5">
-            <MicIcon />
-          </button>
-          <Link
-            href={CHAT_URL}
-            aria-label="Отправить запрос"
-            className="grid h-9 w-9 place-items-center rounded-full bg-black text-white transition hover:scale-105 hover:bg-[#6c5cff]"
-          >
-            <ArrowUpIcon />
-          </Link>
+          <div className="flex items-center justify-end gap-2">
+            <button aria-label="Голосовой ввод" className="grid h-8 w-8 place-items-center rounded-full text-black/60 transition hover:bg-black/5">
+              <MicIcon />
+            </button>
+            <Link
+              href={CHAT_URL}
+              aria-label="Отправить запрос"
+              className="grid h-9 w-9 place-items-center rounded-full bg-black text-white transition hover:scale-105 hover:bg-[#6c5cff]"
+            >
+              <ArrowUpIcon />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function HeroAvatar({ src, alt }: { src: string; alt: string }) {
-  return (
-    <span className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border border-white/90 bg-[#ece7df] shadow-[0_4px_10px_rgba(30,30,30,0.08)]">
-      <Image src={src} alt={alt} width={28} height={28} className="h-full w-full object-cover" />
-    </span>
   );
 }
 
