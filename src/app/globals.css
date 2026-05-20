@@ -110,9 +110,11 @@ body {
 }
 
 .hero-users-pill span {
-  background: linear-gradient(90deg, #5b76ff 0%, #ef477e 52%, #f2a33d 100%);
+  background: linear-gradient(90deg, #5b76ff 0%, #ef477e 34%, #f2a33d 66%, #5b76ff 100%);
+  background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
+  animation: hero-users-gradient-flow 2.8s ease-in-out infinite;
 }
 
 .hero-users-pill svg {
@@ -137,6 +139,19 @@ body {
 .prompt-card-surface {
   position: relative;
   z-index: 1;
+}
+
+.prompt-textarea {
+  display: block;
+  scrollbar-width: none;
+}
+
+.prompt-textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.prompt-textarea::placeholder {
+  opacity: 1;
 }
 
 .typing-caret {
@@ -178,6 +193,15 @@ body {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-users-gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 

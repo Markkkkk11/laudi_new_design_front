@@ -851,12 +851,17 @@ function useSendoffWaveReveal() {
 function PromptComposer() {
   const [promptIndex, setPromptIndex] = useState(0);
   const [text, setText] = useState("");
+  const [draft, setDraft] = useState("");
   const [phase, setPhase] = useState<"typing" | "holding" | "deleting">("typing");
   const [globeEnabled, setGlobeEnabled] = useState(false);
   const [brainEnabled, setBrainEnabled] = useState(false);
   const prompt = PROMPTS[promptIndex];
 
   useEffect(() => {
+    if (draft) {
+      return;
+    }
+
     const delay = phase === "holding" ? 1450 : phase === "typing" ? 38 : 18;
 
     const timeout = window.setTimeout(() => {
@@ -883,15 +888,19 @@ function PromptComposer() {
     }, delay);
 
     return () => window.clearTimeout(timeout);
-  }, [phase, prompt, text]);
+  }, [draft, phase, prompt, text]);
 
   return (
     <div className="prompt-card relative rounded-[24px] border border-white/55 bg-white/24 p-3 text-left shadow-[0_26px_86px_rgba(35,38,44,0.08)] backdrop-blur-2xl sm:p-4">
       <div className="prompt-card-surface rounded-[19px] bg-white px-4 pb-3 pt-4 shadow-[0_18px_48px_rgba(35,38,44,0.07)] sm:px-5 sm:pb-3 sm:pt-5">
-        <div className="min-h-[60px] px-1 pt-1 text-[17px] leading-[1.3] tracking-[-0.02em] text-[#60636d] sm:min-h-[72px] sm:px-2 sm:text-[25px]">
-          <span>{text}</span>
-          <span className="typing-caret" aria-hidden="true" />
-        </div>
+        <textarea
+          value={draft}
+          placeholder={text}
+          aria-label="Введите запрос"
+          onChange={(event) => setDraft(event.target.value)}
+          className="prompt-textarea min-h-[60px] w-full resize-none border-0 bg-transparent px-1 pt-1 text-[17px] leading-[1.3] tracking-[-0.02em] text-[#25272d] outline-none placeholder:text-[#60636d] focus:ring-0 sm:min-h-[72px] sm:px-2 sm:text-[25px]"
+          rows={2}
+        />
         <div className="mt-3 flex items-center justify-between gap-3 border-t border-black/[0.06] px-1 pt-3">
           <div className="flex items-center gap-2 sm:gap-3">
             <button aria-label="Добавить файл" className="grid h-8 w-8 place-items-center rounded-full text-black transition hover:bg-black/5">
