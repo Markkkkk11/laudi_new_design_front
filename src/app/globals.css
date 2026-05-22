@@ -469,7 +469,7 @@ body {
   display: grid;
   width: 100%;
   min-height: 58px;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 28px;
   border-radius: 999px;
@@ -482,6 +482,7 @@ body {
 
 .site-brand {
   display: inline-flex;
+  justify-self: start;
   min-width: 0;
   align-items: center;
   gap: 9px;
@@ -555,6 +556,7 @@ body {
 
 .site-actions {
   display: inline-flex;
+  justify-self: end;
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
